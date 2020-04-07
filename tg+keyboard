@@ -1,8 +1,8 @@
 import telebot
 
-bot = telebot.TeleBot('')
+bot = telebot.TeleBot('1036484441:AAEjqVXd8UEAtmC8qOT6YctUrxa9-_fed9c')
 keyboard1 = telebot.types.ReplyKeyboardMarkup()
-keyboard1.row('Привет', 'Пока')
+keyboard1.row('Привет', 'Пока', 'Как дела?', 'Что делаешь?')
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
@@ -14,7 +14,13 @@ def send_text(message):
         bot.send_message(message.chat.id, 'Привет, мой БОГ!')
     elif message.text.lower() == 'пока':
         bot.send_message(message.chat.id, 'Прощай, ПОВЕЛИТЕЛЬ!')
-    elif message.text.lower() == 'гифка:
+    elif message.text.lower() == 'как дела?':
+        bot.send_message(message.chat.id, 'Лучше всех!А у тебя?')
+    elif message.text.lower() == 'что делаешь?':
+        bot.send_message(message.chat.id, 'С Тобой переписываюсь!')
+    elif message.text.lower() == 'я кушаю':
+        bot.send_message(message.chat.id, 'Приятного аппетита!')
+    elif message.text.lower() == 'гифка':
         bot.send_sticker(message.chat.id, 'CAADAgADZgkAAnlc4gmfCor5YbYYRAI')
 
 @bot.message_handler(content_types=['sticker'])
