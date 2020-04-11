@@ -3,7 +3,7 @@ import COVID19Py
 import telebot
 
 covid19 = COVID19Py.COVID19()
-bot = telebot.TeleBot('')#токен
+bot = telebot.TeleBot('964881905:AAEKHJrygcipmgF-FH51DSXFs0A1UYLrR00')
 
 
 @bot.message_handler(commands=['start'])
@@ -13,7 +13,8 @@ def start(message):
     btn2 = types.KeyboardButton('Украина')
     btn3 = types.KeyboardButton('Россия')
     btn4 = types.KeyboardButton('Беларусь')
-    markup.add(btn1, btn2, btn3, btn4)
+    btn5 = types.KeyboardButton('Новая Зеландия')
+    markup.add(btn1, btn2, btn3, btn4, btn5, )
     send_message = f"<b>Привет {message.from_user.first_name}!</b>\nНапишите название страны с маленькой буквы"
     bot.send_message(message.chat.id, send_message, parse_mode='html', reply_markup=markup)
 
@@ -53,10 +54,9 @@ def mess(message):
         location = covid19.getLocationByCountryCode("CN")
     elif get_message_bot == "новая зеландия":
         location = covid19.getLocationByCountryCode("NZ")
-
     else:
-        location = covid19.getLatest()
-        final_message = f"<u>Данные по всему миру:</u>\n<b>Заболевших: <b>{location['confirmed']:,}\n<b>Смертей: Би"
+        location = covid19.getLocationByCountryCode('UA')
+
 
     if final_message == "":
             date = location[0]['last_updated'].split("T")
